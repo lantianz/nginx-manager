@@ -1,0 +1,64 @@
+#pragma code_page(65001)
+#include <windows.h>
+#include "resource.h"
+
+// 应用程序图标
+IDI_APP_ICON ICON "icon.ico"
+
+// 字体设置对话框
+IDD_FONT_SETTINGS DIALOG 0, 0, 320, 220
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "字体设置"
+FONT 9, "Microsoft YaHei UI"
+BEGIN
+    LTEXT           "普通文本字体大小 (8-72):", -1, 20, 20, 140, 12
+    EDITTEXT        IDC_NORMAL_FONT_EDIT, 170, 18, 50, 14, ES_NUMBER
+    LTEXT           "pt", -1, 225, 20, 15, 12
+
+    LTEXT           "按钮文本字体大小 (8-72):", -1, 20, 45, 140, 12
+    EDITTEXT        IDC_BUTTON_FONT_EDIT, 170, 43, 50, 14, ES_NUMBER
+    LTEXT           "pt", -1, 225, 45, 15, 12
+
+    LTEXT           "日志文本字体大小 (8-72):", -1, 20, 70, 140, 12
+    EDITTEXT        IDC_LOG_FONT_EDIT, 170, 68, 50, 14, ES_NUMBER
+    LTEXT           "pt", -1, 225, 70, 15, 12
+
+    GROUPBOX        "预览", -1, 20, 95, 280, 80
+    LTEXT           "这是普通文本的预览效果", IDC_PREVIEW_NORMAL, 30, 115, 260, 15
+    LTEXT           "这是按钮文本的预览效果", IDC_PREVIEW_BUTTON, 30, 135, 260, 15
+    LTEXT           "这是日志文本的预览效果", IDC_PREVIEW_LOG, 30, 155, 260, 15
+
+    PUSHBUTTON      "预览", IDC_PREVIEW_BTN, 60, 190, 60, 25
+    PUSHBUTTON      "应用", IDOK, 130, 190, 60, 25
+    PUSHBUTTON      "取消", IDCANCEL, 200, 190, 60, 25
+END
+
+// 版本信息
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION 1,0,0,1
+PRODUCTVERSION 1,0,0,1
+FILEFLAGSMASK 0x3fL
+FILEFLAGS 0x0L
+FILEOS 0x40004L
+FILETYPE 0x1L
+FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "CompanyName", "Nginx Manager"
+            VALUE "FileDescription", "Nginx 服务管理器"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "ngTool"
+            VALUE "LegalCopyright", "Copyright (C) 2024"
+            VALUE "OriginalFilename", "ngTool.exe"
+            VALUE "ProductName", "Nginx Manager"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
