@@ -11,15 +11,15 @@ STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "字体设置"
 FONT 9, "Microsoft YaHei UI"
 BEGIN
-    LTEXT           "普通文本字体大小 (8-72):", -1, 20, 20, 140, 12
+    LTEXT           "普通文本字体大小 (10-32):", -1, 20, 20, 140, 12
     EDITTEXT        IDC_NORMAL_FONT_EDIT, 170, 18, 50, 14, ES_NUMBER
     LTEXT           "pt", -1, 225, 20, 15, 12
 
-    LTEXT           "按钮文本字体大小 (8-72):", -1, 20, 45, 140, 12
+    LTEXT           "按钮文本字体大小 (10-32):", -1, 20, 45, 140, 12
     EDITTEXT        IDC_BUTTON_FONT_EDIT, 170, 43, 50, 14, ES_NUMBER
     LTEXT           "pt", -1, 225, 45, 15, 12
 
-    LTEXT           "日志文本字体大小 (8-72):", -1, 20, 70, 140, 12
+    LTEXT           "日志文本字体大小 (8-24):", -1, 20, 70, 140, 12
     EDITTEXT        IDC_LOG_FONT_EDIT, 170, 68, 50, 14, ES_NUMBER
     LTEXT           "pt", -1, 225, 70, 15, 12
 

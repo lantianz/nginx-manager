@@ -642,15 +642,15 @@ void LoadFontConfiguration() {
 
     // 读取字体配置
     g_fontConfig.titleSize = GetPrivateProfileIntW(L"Fonts", L"TitleSize", 24, configPath.c_str());
-    g_fontConfig.normalSize = GetPrivateProfileIntW(L"Fonts", L"NormalSize", 16, configPath.c_str());
-    g_fontConfig.buttonSize = GetPrivateProfileIntW(L"Fonts", L"ButtonSize", 15, configPath.c_str());
-    g_fontConfig.logSize = GetPrivateProfileIntW(L"Fonts", L"LogSize", 12, configPath.c_str());
+    g_fontConfig.normalSize = GetPrivateProfileIntW(L"Fonts", L"NormalSize", 18, configPath.c_str());
+    g_fontConfig.buttonSize = GetPrivateProfileIntW(L"Fonts", L"ButtonSize", 16, configPath.c_str());
+    g_fontConfig.logSize = GetPrivateProfileIntW(L"Fonts", L"LogSize", 14, configPath.c_str());
 
     // 验证字体大小范围
     if (g_fontConfig.titleSize < 12 || g_fontConfig.titleSize > 48) g_fontConfig.titleSize = 24;
-    if (g_fontConfig.normalSize < 10 || g_fontConfig.normalSize > 32) g_fontConfig.normalSize = 16;
-    if (g_fontConfig.buttonSize < 10 || g_fontConfig.buttonSize > 32) g_fontConfig.buttonSize = 15;
-    if (g_fontConfig.logSize < 8 || g_fontConfig.logSize > 24) g_fontConfig.logSize = 12;
+    if (g_fontConfig.normalSize < 10 || g_fontConfig.normalSize > 32) g_fontConfig.normalSize = 18;
+    if (g_fontConfig.buttonSize < 10 || g_fontConfig.buttonSize > 32) g_fontConfig.buttonSize = 16;
+    if (g_fontConfig.logSize < 8 || g_fontConfig.logSize > 24) g_fontConfig.logSize = 14;
 }
 
 // 保存字体配置
@@ -840,22 +840,22 @@ INT_PTR CALLBACK FontSettingsDialogProc(HWND hDlg, UINT message, WPARAM wParam, 
                     // 验证并应用字体设置
                     BOOL success;
                     int normalSize = GetDlgItemInt(hDlg, IDC_NORMAL_FONT_EDIT, &success, FALSE);
-                    if (!success || normalSize < 8 || normalSize > 72) {
-                        MessageBox(hDlg, L"普通文本字体大小必须在8-72之间", L"输入错误", MB_OK | MB_ICONERROR);
+                    if (!success || normalSize < 10 || normalSize > 32) {
+                        MessageBox(hDlg, L"普通文本字体大小必须在10-32之间", L"输入错误", MB_OK | MB_ICONERROR);
                         SetFocus(GetDlgItem(hDlg, IDC_NORMAL_FONT_EDIT));
                         break;
                     }
 
                     int buttonSize = GetDlgItemInt(hDlg, IDC_BUTTON_FONT_EDIT, &success, FALSE);
-                    if (!success || buttonSize < 8 || buttonSize > 72) {
-                        MessageBox(hDlg, L"按钮文本字体大小必须在8-72之间", L"输入错误", MB_OK | MB_ICONERROR);
+                    if (!success || buttonSize < 10 || buttonSize > 32) {
+                        MessageBox(hDlg, L"按钮文本字体大小必须在10-32之间", L"输入错误", MB_OK | MB_ICONERROR);
                         SetFocus(GetDlgItem(hDlg, IDC_BUTTON_FONT_EDIT));
                         break;
                     }
 
                     int logSize = GetDlgItemInt(hDlg, IDC_LOG_FONT_EDIT, &success, FALSE);
-                    if (!success || logSize < 8 || logSize > 72) {
-                        MessageBox(hDlg, L"日志文本字体大小必须在8-72之间", L"输入错误", MB_OK | MB_ICONERROR);
+                    if (!success || logSize < 8 || logSize > 24) {
+                        MessageBox(hDlg, L"日志文本字体大小必须在8-24之间", L"输入错误", MB_OK | MB_ICONERROR);
                         SetFocus(GetDlgItem(hDlg, IDC_LOG_FONT_EDIT));
                         break;
                     }
@@ -948,13 +948,13 @@ void UpdateFontPreview(HWND hDlg) {
     // 获取输入的字体大小
     BOOL success;
     int normalSize = GetDlgItemInt(hDlg, IDC_NORMAL_FONT_EDIT, &success, FALSE);
-    if (!success || normalSize < 8 || normalSize > 72) normalSize = g_fontConfig.normalSize;
+    if (!success || normalSize < 10 || normalSize > 32) normalSize = g_fontConfig.normalSize;
 
     int buttonSize = GetDlgItemInt(hDlg, IDC_BUTTON_FONT_EDIT, &success, FALSE);
-    if (!success || buttonSize < 8 || buttonSize > 72) buttonSize = g_fontConfig.buttonSize;
+    if (!success || buttonSize < 10 || buttonSize > 32) buttonSize = g_fontConfig.buttonSize;
 
     int logSize = GetDlgItemInt(hDlg, IDC_LOG_FONT_EDIT, &success, FALSE);
-    if (!success || logSize < 8 || logSize > 72) logSize = g_fontConfig.logSize;
+    if (!success || logSize < 8 || logSize > 24) logSize = g_fontConfig.logSize;
 
     // 创建预览字体
     hPreviewNormalFont = CreateFontW(
